@@ -1,3 +1,5 @@
+
+
 import 'package:exam_ai/components/choice.dart';
 import 'package:flutter/material.dart';
 
@@ -16,59 +18,49 @@ class _HomeState extends State<Home> {
     Choice('Essay', '4'),
   ];
   int? _selectedIndex;
+  
+  List dropped = [Text('dsaf')];
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
-          child:
-              SearchBar(leading: const Icon(Icons.search), trailing: <Widget>[
-            IconButton(onPressed: () {}, icon: const Icon(Icons.upload)),
-          ]),
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('data'),
+          backgroundColor: Colors.lightGreenAccent[400],
         ),
-        const Text('Proceed to create Mock Exam'),
-        Expanded(
-          child: ListView.builder(
-            itemCount: choices.length,
-            itemBuilder: (_, index) {
-              return ListTile(
-                leading: Text(choices[index].label),
-                title: Text(choices[index].name),
-                trailing:
-                    _selectedIndex == index ? const Icon(Icons.check) : null,
-                onTap: () {
-                  setState(() {
-                    if (_selectedIndex == index) {
-                      _selectedIndex = null;
-                    } else {
-                      _selectedIndex = index;
-                    }
-                  });
-                },
-                selected: _selectedIndex == index,
-                selectedTileColor: Colors.deepPurple,
-                selectedColor: Colors.white,
-              );
-            },
+        body: Container(
+          decoration:
+              BoxDecoration(border: Border.all(style: BorderStyle.solid)),
+          padding: EdgeInsets.all(10),
+          child: Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                FilledButton.icon(
+                  onPressed: () {},
+                  label: Text('CREATE'),
+                  icon: Icon(Icons.add),
+                  style: ButtonStyle(
+                      backgroundColor:
+                          WidgetStatePropertyAll(Colors.purple[900])),
+                ),
+                const SizedBox(width: 30,),
+                const DropdownMenu(
+                  dropdownMenuEntries: [],
+                  width: 200,
+                ),  
+                const SizedBox(width: 50,),
+            
+                 Row(
+                  children: [
+                    IconButton(onPressed: (){}, icon: const Icon(Icons.cached)),
+                    IconButton(onPressed: (){}, icon: const Icon(Icons.abc)),
+                    IconButton(onPressed: (){}, icon: const Icon(Icons.cloud_upload_outlined)),
+                  ],
+                ),
+              ],
+            ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 100),
-          child: TextField(decoration: InputDecoration(hintText: 'Items',border: OutlineInputBorder()),maxLength: 2,),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 100  ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              FilledButton(onPressed: () {}, child: Text('Save draft')),
-              FilledButton(onPressed: () {}, child: Text('next'))
-            ],
-          ),
-        )
-      ],
-    );
+        ));
   }
 }
