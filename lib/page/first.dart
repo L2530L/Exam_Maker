@@ -20,12 +20,15 @@ class First extends StatelessWidget {
                 ),
               ),
             ),
-            Text('Resources',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  color: Colors.black,
-                ))
+            Text(
+              'Resources',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                color: Colors.black,
+              ),
+            ),
+            SearchBar(constraints: BoxConstraints(maxHeight: 100, maxWidth: 350),),
           ],
         ),
         TextButton(
@@ -36,7 +39,7 @@ class First extends StatelessWidget {
                     builder: (context) => const Home(),
                   ));
             },
-            child: Text('Create an Exam or Quiz'))
+            child: const Text('Create an Exam or Quiz'))
       ],
     );
   }

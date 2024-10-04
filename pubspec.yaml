@@ -17,5 +17,5 @@ dev_dependencies:
 
 flutter:
   assets:
-    - lib/assets/bee.png
+    - lib/assets/
   uses-material-design: true
