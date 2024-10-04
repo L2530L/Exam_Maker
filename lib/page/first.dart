@@ -20,24 +20,23 @@ class First extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              width: 25,
-            ),
             Text('Resources',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 12,
+                  fontSize: 20,
                   color: Colors.black,
                 ))
           ],
         ),
         TextButton(
-            onPressed: (){
+            onPressed: () {
               Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const Home(),));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Home(),
+                  ));
             },
-            child: Text('data'))
+            child: Text('Create an Exam or Quiz'))
       ],
     );
   }

@@ -1,7 +1,6 @@
 import 'package:exam_ai/page/first.dart';
 import 'package:flutter/material.dart';
 
-import 'page/home.dart';
 
 void main() {
   runApp(const MainApp());

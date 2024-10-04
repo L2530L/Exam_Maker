@@ -10,8 +10,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  
-
   TextEditingController items = TextEditingController();
   List numba = [
     [
@@ -36,9 +34,8 @@ class _HomeState extends State<Home> {
       DropdownMenuEntry(value: 5, label: '5'),
     ],
   ];
-  
-  int selectedIndex = 0;
 
+  int selectedIndex = 0;
 
   //Entries for details
   List<DropdownMenuEntry> subject = [
@@ -60,13 +57,19 @@ class _HomeState extends State<Home> {
     DropdownMenuEntry(value: 'Essay', label: 'Essay'),
   ];
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Exam'),
-        backgroundColor: Colors.lightGreenAccent[400],
+        title: Row(
+          children: [
+            Container(
+              child: Text("Creator's page"),
+              decoration: BoxDecoration(color: Colors.amber),
+            ),
+          ],
+        ),
+        backgroundColor: const Color.fromRGBO(147, 216, 90, 1),
         toolbarHeight: 30,
       ),
       body: Column(
@@ -118,66 +121,66 @@ class _HomeState extends State<Home> {
               ],
             ),
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           //2
           Details(
             label: 'Subject',
             entries: subject,
             controller: TextEditingController(),
           ),
-          const SizedBox(height: 30,),
-          Details(
-            label: 'Exam Options',
-            entries: examOption,
-            controller: TextEditingController()
+          const SizedBox(
+            height: 30,
           ),
-          const SizedBox(height: 30,),
+          Details(
+              label: 'Exam Options',
+              entries: examOption,
+              controller: TextEditingController()),
+          const SizedBox(
+            height: 30,
+          ),
           DropdownMenu(
             label: Text('Exam Type'),
             dropdownMenuEntries: examType,
             controller: items,
             menuHeight: 234,
             width: 250,
-            onSelected:(value){
-            if (value == 'Multiple Choice'){
-              setState(() {
-                selectedIndex = 0;
-              });
-            }
-            else if (value == 'Identification'){
-              setState(() {
-                selectedIndex = 1;
-              });
-            }
-            else if (value == 'Matching Type'){
-              setState(() {
-                selectedIndex = 2;
-              });
-            }
-            else if (value == 'Problem Solving'){
-              setState(() {
-                selectedIndex = 3;
-              });
-            }
-            else if (value == 'Essay'){
-              setState(() {
-                selectedIndex = 4;
-              });
-            }
+            onSelected: (value) {
+              if (value == 'Multiple Choice') {
+                setState(() {
+                  selectedIndex = 0;
+                });
+              } else if (value == 'Identification') {
+                setState(() {
+                  selectedIndex = 1;
+                });
+              } else if (value == 'Matching Type') {
+                setState(() {
+                  selectedIndex = 2;
+                });
+              } else if (value == 'Problem Solving') {
+                setState(() {
+                  selectedIndex = 3;
+                });
+              } else if (value == 'Essay') {
+                setState(() {
+                  selectedIndex = 4;
+                });
+              }
             },
           ),
-          const SizedBox(height: 30,),
+          const SizedBox(
+            height: 30,
+          ),
           DropdownMenu(
             label: Text('Items'),
             dropdownMenuEntries: numba[selectedIndex],
             menuHeight: 234,
             width: 250,
-    )
-    
+          ),
         ],
       ),
     );
   }
 }
-
-
