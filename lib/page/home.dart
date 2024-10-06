@@ -1,4 +1,5 @@
 import 'package:exam_ai/components/details.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -10,6 +11,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   TextEditingController items = TextEditingController();
+  PlatformFile? file;
   List numba = [
     [
       const DropdownMenuEntry<dynamic>(value: 15, label: '15'),
@@ -89,23 +91,27 @@ class _HomeState extends State<Home> {
                       backgroundColor:
                           WidgetStatePropertyAll(Colors.purple[900])),
                 ),
+
                 const SizedBox(
                   width: 30,
                 ),
+
                 const DropdownMenu(
                   dropdownMenuEntries: [],
                   width: 200,
                 ),
+
                 const SizedBox(
                   width: 50,
                 ),
+
                 Row(
                   children: [
                     IconButton(
                         onPressed: () {}, icon: const Icon(Icons.cached)),
                     IconButton(onPressed: () {}, icon: const Icon(Icons.abc)),
                     IconButton(
-                        onPressed: () {},
+                        onPressed: pickFile,
                         icon: const Icon(Icons.cloud_upload_outlined)),
                   ],
                 ),
@@ -182,4 +188,23 @@ class _HomeState extends State<Home> {
       ),
     );
   }
+
+
+
+  //for piccking file
+  Future<void> pickFile() async {
+    final result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['pdf', 'docx', 'txt'],
+    );
+    if (result != null && result.files.isNotEmpty) {
+      setState(() {
+        file = result.files.single;
+      });
+    }
+  }
+  
 }
+
+
+ 
