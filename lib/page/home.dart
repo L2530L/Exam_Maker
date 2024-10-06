@@ -1,4 +1,3 @@
-import 'package:exam_ai/components/choice.dart';
 import 'package:exam_ai/components/details.dart';
 import 'package:flutter/material.dart';
 

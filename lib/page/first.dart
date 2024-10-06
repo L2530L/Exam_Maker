@@ -1,5 +1,3 @@
-import 'dart:js_interop';
-
 import 'package:exam_ai/components/homeCard.dart';
 import 'package:exam_ai/components/mockExamCreator.dart';
 import 'package:exam_ai/components/teacherResource.dart';
