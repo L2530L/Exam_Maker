@@ -13,25 +13,25 @@ class _HomeState extends State<Home> {
   TextEditingController items = TextEditingController();
   List numba = [
     [
-      DropdownMenuEntry<dynamic>(value: 15, label: '15'),
-      DropdownMenuEntry(value: 20, label: '20'),
+      const DropdownMenuEntry<dynamic>(value: 15, label: '15'),
+      const DropdownMenuEntry(value: 20, label: '20'),
     ],
     [
-      DropdownMenuEntry(value: 10, label: '10'),
-      DropdownMenuEntry(value: 15, label: '15'),
+      const DropdownMenuEntry(value: 10, label: '10'),
+      const DropdownMenuEntry(value: 15, label: '15'),
     ],
     [
-      DropdownMenuEntry(value: 5, label: '5'),
-      DropdownMenuEntry(value: 10, label: '10'),
+      const DropdownMenuEntry(value: 5, label: '5'),
+      const DropdownMenuEntry(value: 10, label: '10'),
     ],
     [
-      DropdownMenuEntry(value: 5, label: '5'),
-      DropdownMenuEntry(value: 10, label: '10'),
+      const DropdownMenuEntry(value: 5, label: '5'),
+      const DropdownMenuEntry(value: 10, label: '10'),
     ],
     [
-      DropdownMenuEntry(value: 2, label: '2'),
-      DropdownMenuEntry(value: 4, label: '4'),
-      DropdownMenuEntry(value: 5, label: '5'),
+      const DropdownMenuEntry(value: 2, label: '2'),
+      const DropdownMenuEntry(value: 4, label: '4'),
+      const DropdownMenuEntry(value: 5, label: '5'),
     ],
   ];
 
@@ -39,22 +39,22 @@ class _HomeState extends State<Home> {
 
   //Entries for details
   List<DropdownMenuEntry> subject = [
-    DropdownMenuEntry(value: 0, label: 'English'),
-    DropdownMenuEntry(value: 1, label: 'Math'),
-    DropdownMenuEntry(value: 2, label: 'Science'),
+    const DropdownMenuEntry(value: 0, label: 'English'),
+    const DropdownMenuEntry(value: 1, label: 'Math'),
+    const DropdownMenuEntry(value: 2, label: 'Science'),
   ];
   List<DropdownMenuEntry> examOption = [
-    DropdownMenuEntry(value: 0, label: 'Short Quiz'),
-    DropdownMenuEntry(value: 1, label: 'Long Quiz'),
-    DropdownMenuEntry(value: 2, label: 'Quarter Exams'),
+    const DropdownMenuEntry(value: 0, label: 'Short Quiz'),
+    const DropdownMenuEntry(value: 1, label: 'Long Quiz'),
+    const DropdownMenuEntry(value: 2, label: 'Quarter Exams'),
   ];
 
   List<DropdownMenuEntry> examType = [
-    DropdownMenuEntry(value: 'Multiple Choice', label: 'Multiple Choice'),
-    DropdownMenuEntry(value: 'Identification', label: 'Identification'),
-    DropdownMenuEntry(value: 'Matching Type', label: 'Matching Type'),
-    DropdownMenuEntry(value: 'Problem Solving', label: 'Problem Solving'),
-    DropdownMenuEntry(value: 'Essay', label: 'Essay'),
+    const DropdownMenuEntry(value: 'Multiple Choice', label: 'Multiple Choice'),
+    const DropdownMenuEntry(value: 'Identification', label: 'Identification'),
+    const DropdownMenuEntry(value: 'Matching Type', label: 'Matching Type'),
+    const DropdownMenuEntry(value: 'Problem Solving', label: 'Problem Solving'),
+    const DropdownMenuEntry(value: 'Essay', label: 'Essay'),
   ];
 
   @override
