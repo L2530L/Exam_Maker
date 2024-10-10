@@ -1,7 +1,7 @@
 import 'package:exam_ai/components/homeCard.dart';
 import 'package:exam_ai/components/mockExamCreator.dart';
 import 'package:exam_ai/components/teacherResource.dart';
-import 'package:exam_ai/page/home.dart';
+import 'package:exam_ai/page/second.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 

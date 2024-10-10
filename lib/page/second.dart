@@ -65,8 +65,8 @@ class _HomeState extends State<Home> {
         title: Row(
           children: [
             Container(
-              child: Text("Creator's page"),
               decoration: BoxDecoration(color: Colors.amber),
+              child: const Text("Creator's page"),
             ),
           ],
         ),
@@ -79,54 +79,11 @@ class _HomeState extends State<Home> {
           Container(
             decoration:
                 BoxDecoration(border: Border.all(style: BorderStyle.solid)),
-            padding: EdgeInsets.all(10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                FilledButton.icon(
-                  onPressed: () {},
-                  label: Text('CREATE'),
-                  icon: Icon(Icons.add),
-                  style: ButtonStyle(
-                      backgroundColor:
-                          WidgetStatePropertyAll(Colors.purple[900])),
-                ),
-
-                const SizedBox(
-                  width: 30,
-                ),
-
-                const DropdownMenu(
-                  dropdownMenuEntries: [],
-                  width: 200,
-                ),
-
-                const SizedBox(
-                  width: 50,
-                ),
-
-                Row(
-                  children: [
-                    IconButton(
-                        onPressed: () {}, icon: const Icon(Icons.cached)),
-                    IconButton(onPressed: () {}, icon: const Icon(Icons.abc)),
-                    IconButton(
-                        onPressed: pickFile,
-                        icon: const Icon(Icons.cloud_upload_outlined)),
-                  ],
-                ),
-                Expanded(
-                    child: const SizedBox(
-                  width: 500,
-                )),
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.file_download_done_outlined)),
-                IconButton(onPressed: () {}, icon: const Icon(Icons.print)),
-              ],
-            ),
+            padding: const EdgeInsets.all(10),
+            child: topRow(),
           ),
-          SizedBox(
+
+          const SizedBox(
             height: 20,
           ),
           //2
@@ -135,51 +92,28 @@ class _HomeState extends State<Home> {
             entries: subject,
             controller: TextEditingController(),
           ),
+
           const SizedBox(
             height: 30,
           ),
+
           Details(
               label: 'Exam Options',
               entries: examOption,
               controller: TextEditingController()),
+
           const SizedBox(
             height: 30,
           ),
-          DropdownMenu(
-            label: Text('Exam Type'),
-            dropdownMenuEntries: examType,
-            controller: items,
-            menuHeight: 234,
-            width: 250,
-            onSelected: (value) {
-              if (value == 'Multiple Choice') {
-                setState(() {
-                  selectedIndex = 0;
-                });
-              } else if (value == 'Identification') {
-                setState(() {
-                  selectedIndex = 1;
-                });
-              } else if (value == 'Matching Type') {
-                setState(() {
-                  selectedIndex = 2;
-                });
-              } else if (value == 'Problem Solving') {
-                setState(() {
-                  selectedIndex = 3;
-                });
-              } else if (value == 'Essay') {
-                setState(() {
-                  selectedIndex = 4;
-                });
-              }
-            },
-          ),
+
+          examMethod(),
+          
           const SizedBox(
             height: 30,
           ),
+
           DropdownMenu(
-            label: Text('Items'),
+            label: const Text('Items'),
             dropdownMenuEntries: numba[selectedIndex],
             menuHeight: 234,
             width: 250,
@@ -187,6 +121,90 @@ class _HomeState extends State<Home> {
         ],
       ),
     );
+  }
+
+  DropdownMenu<dynamic> examMethod() {
+    return DropdownMenu(
+          label: Text('Exam Type'),
+          dropdownMenuEntries: examType,
+          controller: items,
+          menuHeight: 234,
+          width: 250,
+          onSelected: (value) {
+            if (value == 'Multiple Choice') {
+              setState(() {
+                selectedIndex = 0;
+              });
+            } else if (value == 'Identification') {
+              setState(() {
+                selectedIndex = 1;
+              });
+            } else if (value == 'Matching Type') {
+              setState(() {
+                selectedIndex = 2;
+              });
+            } else if (value == 'Problem Solving') {
+              setState(() {
+                selectedIndex = 3;
+              });
+            } else if (value == 'Essay') {
+              setState(() {
+                selectedIndex = 4;
+              });
+            }
+          },
+        );
+  }
+
+
+
+
+  Row topRow() {
+    return Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              FilledButton.icon(
+                onPressed: () {},
+                label: const Text('CREATE'),
+                icon: const Icon(Icons.add),
+                style: ButtonStyle(
+                    backgroundColor:
+                        WidgetStatePropertyAll(Colors.purple[900])),
+              ),
+
+              const SizedBox(
+                width: 30,
+              ),
+
+              const DropdownMenu(
+                dropdownMenuEntries: [],
+                width: 200,
+              ),
+
+              const SizedBox(
+                width: 50,
+              ),
+
+              Row(
+                children: [
+                  IconButton(
+                      onPressed: () {}, icon: const Icon(Icons.cached)),
+                  IconButton(onPressed: () {}, icon: const Icon(Icons.abc)),
+                  IconButton(
+                      onPressed: pickFile,
+                      icon: const Icon(Icons.cloud_upload_outlined)),
+                ],
+              ),
+              Expanded(
+                  child: const SizedBox(
+                width: 500,
+              )),
+              IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.file_download_done_outlined)),
+              IconButton(onPressed: () {}, icon: const Icon(Icons.print)),
+            ],
+          );
   }
 
 
