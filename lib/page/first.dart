@@ -42,7 +42,8 @@ class First extends StatelessWidget {
             ],
           ),
           FilledButton(
-            style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Colors.purple)),
+              style: ButtonStyle(
+                  backgroundColor: WidgetStatePropertyAll(Colors.purple)),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -52,14 +53,17 @@ class First extends StatelessWidget {
                 );
               },
               child: const Text('Create an Exam or Quiz')),
-              SizedBox(height: 50,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  const HomeCard(),
-                  const TeacherResourceCard(),
-                  const MockExamCreatorCard(),
-              ],)
+          SizedBox(
+            height: 50,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              const HomeCard(),
+              const TeacherResourceCard(),
+              const MockExamCreatorCard(),
+            ],
+          )
         ],
       ),
     );
