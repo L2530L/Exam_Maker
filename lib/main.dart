@@ -1,4 +1,4 @@
-import 'package:exam_ai/page/first.dart';
+import 'package:exam_ai/page/firstHome.dart';
 import 'package:flutter/material.dart';
 
 
@@ -13,7 +13,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const  MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: First()
+      home: firstHome()
     );
   }
 }
