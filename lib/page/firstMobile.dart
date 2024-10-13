@@ -1,5 +1,7 @@
 import 'package:exam_ai/components/homeCard.dart';
 import 'package:exam_ai/components/mockExamCreator.dart';
+import 'package:exam_ai/components/navigator.dart';
+import 'package:exam_ai/components/search.dart';
 import 'package:exam_ai/components/teacherResource.dart';
 import 'package:exam_ai/page/second.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +21,7 @@ class _FirstMobile extends State<FirstMobile> {
         // Header
         Container(
           padding: EdgeInsets.all(16),
-          color: Colors.orange[300],
+          color: Colors.orangeAccent,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -38,39 +40,20 @@ class _FirstMobile extends State<FirstMobile> {
             ],
           ),
         ),
+
         // Search bar
         Container(
           padding: EdgeInsets.all(16),
           color: Colors.grey[100],
-          child: TextField(
-            decoration: InputDecoration(
-              hintText: 'Search...',
-              prefixIcon: Icon(Icons.search),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30),
-              ),
-              filled: true,
-              fillColor: Colors.white,
-            ),
-          ),
+          child: searchBar()
         ),
-        // Main content
+
+
+        // Main
         Expanded(
           child: ListView(
             children: [
-              ElevatedButton(
-                child: Text('Create an Exam or Quiz'),
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(double.infinity, 50),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const Home(),
-                      ));
-                },
-              ),
+              Container(margin: EdgeInsets.all(20),child: navigator(context)),
 
               SizedBox(height: 16),
               

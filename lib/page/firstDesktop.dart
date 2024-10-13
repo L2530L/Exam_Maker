@@ -1,5 +1,7 @@
 import 'package:exam_ai/components/homeCard.dart';
 import 'package:exam_ai/components/mockExamCreator.dart';
+import 'package:exam_ai/components/navigator.dart';
+import 'package:exam_ai/components/search.dart';
 import 'package:exam_ai/components/teacherResource.dart';
 import 'package:exam_ai/page/second.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,18 +18,7 @@ class FirstDesktop extends StatelessWidget {
       appBar: AppBar(title: appBar(),toolbarHeight: 100,),
       body: Column(
         children: [
-          FilledButton(
-              style: ButtonStyle(
-                  backgroundColor: WidgetStatePropertyAll(Colors.purple)),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const Home(),
-                  ),
-                );
-              },
-              child: const Text('Create an Exam or Quiz')),
+          navigator(context),
           SizedBox(
             height: 50,
           ),
@@ -44,11 +35,12 @@ class FirstDesktop extends StatelessWidget {
     );
   }
 
+
   Row appBar() {
-    return const Row(
+    return Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Padding(
+            const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'MOCKexam',
@@ -58,7 +50,7 @@ class FirstDesktop extends StatelessWidget {
                     fontSize: 50),
               ),
             ),
-            Text(
+            const Text(
               'Resources',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -66,11 +58,7 @@ class FirstDesktop extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
-            SearchBar(
-              constraints: BoxConstraints(maxWidth: 250),
-              padding: WidgetStatePropertyAll(EdgeInsets.all(10)),
-              trailing: <Widget>[Icon(Icons.search)],
-            ),
+            searchBar()
           ],
         );
   }
