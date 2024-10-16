@@ -1,4 +1,5 @@
-import 'package:exam_ai/page/second.dart';
+import 'package:exam_ai/page/secondDesktop.dart';
+import 'package:exam_ai/page/secondHome.dart';
 import 'package:flutter/material.dart';
 
 FilledButton navigator(BuildContext context) {
@@ -9,7 +10,7 @@ FilledButton navigator(BuildContext context) {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const Home(),
+                  builder: (context) => const SecondHome(),
                 ),
               );
             },

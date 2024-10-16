@@ -2,14 +2,14 @@ import 'package:exam_ai/components/details.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class SecondDesktop extends StatefulWidget {
+  const SecondDesktop({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<SecondDesktop> createState() => _SecondDesktopState();
 }
 
-class _HomeState extends State<Home> {
+class _SecondDesktopState extends State<SecondDesktop> {
   TextEditingController items = TextEditingController();
   PlatformFile? file;
   List numba = [

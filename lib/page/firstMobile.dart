@@ -3,7 +3,7 @@ import 'package:exam_ai/components/mockExamCreator.dart';
 import 'package:exam_ai/components/navigator.dart';
 import 'package:exam_ai/components/search.dart';
 import 'package:exam_ai/components/teacherResource.dart';
-import 'package:exam_ai/page/second.dart';
+import 'package:exam_ai/page/secondDesktop.dart';
 import 'package:flutter/material.dart';
 
 class FirstMobile extends StatefulWidget {
