@@ -1,4 +1,5 @@
 import 'package:exam_ai/components/details.dart';
+import 'package:exam_ai/constants/const.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -12,51 +13,8 @@ class SecondDesktop extends StatefulWidget {
 class _SecondDesktopState extends State<SecondDesktop> {
   TextEditingController items = TextEditingController();
   PlatformFile? file;
-  List numba = [
-    [
-      const DropdownMenuEntry<dynamic>(value: 15, label: '15'),
-      const DropdownMenuEntry(value: 20, label: '20'),
-    ],
-    [
-      const DropdownMenuEntry(value: 10, label: '10'),
-      const DropdownMenuEntry(value: 15, label: '15'),
-    ],
-    [
-      const DropdownMenuEntry(value: 5, label: '5'),
-      const DropdownMenuEntry(value: 10, label: '10'),
-    ],
-    [
-      const DropdownMenuEntry(value: 5, label: '5'),
-      const DropdownMenuEntry(value: 10, label: '10'),
-    ],
-    [
-      const DropdownMenuEntry(value: 2, label: '2'),
-      const DropdownMenuEntry(value: 4, label: '4'),
-      const DropdownMenuEntry(value: 5, label: '5'),
-    ],
-  ];
 
   int selectedIndex = 0;
-
-  //Entries for details
-  List<DropdownMenuEntry> subject = [
-    const DropdownMenuEntry(value: 0, label: 'English'),
-    const DropdownMenuEntry(value: 1, label: 'Math'),
-    const DropdownMenuEntry(value: 2, label: 'Science'),
-  ];
-  List<DropdownMenuEntry> examOption = [
-    const DropdownMenuEntry(value: 0, label: 'Short Quiz'),
-    const DropdownMenuEntry(value: 1, label: 'Long Quiz'),
-    const DropdownMenuEntry(value: 2, label: 'Quarter Exams'),
-  ];
-
-  List<DropdownMenuEntry> examType = [
-    const DropdownMenuEntry(value: 'Multiple Choice', label: 'Multiple Choice'),
-    const DropdownMenuEntry(value: 'Identification', label: 'Identification'),
-    const DropdownMenuEntry(value: 'Matching Type', label: 'Matching Type'),
-    const DropdownMenuEntry(value: 'Problem Solving', label: 'Problem Solving'),
-    const DropdownMenuEntry(value: 'Essay', label: 'Essay'),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +65,7 @@ class _SecondDesktopState extends State<SecondDesktop> {
           ),
 
           examMethod(),
-          
+
           const SizedBox(
             height: 30,
           ),
@@ -125,89 +83,78 @@ class _SecondDesktopState extends State<SecondDesktop> {
 
   DropdownMenu<dynamic> examMethod() {
     return DropdownMenu(
-          label: Text('Exam Type'),
-          dropdownMenuEntries: examType,
-          controller: items,
-          menuHeight: 234,
-          width: 250,
-          onSelected: (value) {
-            if (value == 'Multiple Choice') {
-              setState(() {
-                selectedIndex = 0;
-              });
-            } else if (value == 'Identification') {
-              setState(() {
-                selectedIndex = 1;
-              });
-            } else if (value == 'Matching Type') {
-              setState(() {
-                selectedIndex = 2;
-              });
-            } else if (value == 'Problem Solving') {
-              setState(() {
-                selectedIndex = 3;
-              });
-            } else if (value == 'Essay') {
-              setState(() {
-                selectedIndex = 4;
-              });
-            }
-          },
-        );
+      label: Text('Exam Type'),
+      dropdownMenuEntries: examType,
+      controller: items,
+      menuHeight: 234,
+      width: 250,
+      onSelected: (value) {
+        if (value == 'Multiple Choice') {
+          setState(() {
+            selectedIndex = 0;
+          });
+        } else if (value == 'Identification') {
+          setState(() {
+            selectedIndex = 1;
+          });
+        } else if (value == 'Matching Type') {
+          setState(() {
+            selectedIndex = 2;
+          });
+        } else if (value == 'Problem Solving') {
+          setState(() {
+            selectedIndex = 3;
+          });
+        } else if (value == 'Essay') {
+          setState(() {
+            selectedIndex = 4;
+          });
+        }
+      },
+    );
   }
-
-
-
 
   Row topRow() {
     return Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              FilledButton.icon(
-                onPressed: () {},
-                label: const Text('CREATE'),
-                icon: const Icon(Icons.add),
-                style: ButtonStyle(
-                    backgroundColor:
-                        WidgetStatePropertyAll(Colors.purple[900])),
-              ),
-
-              const SizedBox(
-                width: 30,
-              ),
-
-              const DropdownMenu(
-                dropdownMenuEntries: [],
-                width: 200,
-              ),
-
-              const SizedBox(
-                width: 50,
-              ),
-
-              Row(
-                children: [
-                  IconButton(
-                      onPressed: () {}, icon: const Icon(Icons.cached)),
-                  IconButton(onPressed: () {}, icon: const Icon(Icons.abc)),
-                  IconButton(
-                      onPressed: pickFile,
-                      icon: const Icon(Icons.cloud_upload_outlined)),
-                ],
-              ),
-              Expanded(
-                  child: const SizedBox(
-                width: 500,
-              )),
-              IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.file_download_done_outlined)),
-              IconButton(onPressed: () {}, icon: const Icon(Icons.print)),
-            ],
-          );
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        FilledButton.icon(
+          onPressed: () {},
+          label: const Text('CREATE'),
+          icon: const Icon(Icons.add),
+          style: ButtonStyle(
+              backgroundColor: WidgetStatePropertyAll(Colors.purple[900])),
+        ),
+        const SizedBox(
+          width: 30,
+        ),
+        const DropdownMenu(
+          dropdownMenuEntries: [],
+          width: 200,
+        ),
+        const SizedBox(
+          width: 50,
+        ),
+        Row(
+          children: [
+            IconButton(onPressed: () {}, icon: const Icon(Icons.cached)),
+            IconButton(onPressed: () {}, icon: const Icon(Icons.abc)),
+            IconButton(
+                onPressed: pickFile,
+                icon: const Icon(Icons.cloud_upload_outlined)),
+          ],
+        ),
+        Expanded(
+            child: const SizedBox(
+          width: 500,
+        )),
+        IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.file_download_done_outlined)),
+        IconButton(onPressed: () {}, icon: const Icon(Icons.print)),
+      ],
+    );
   }
-
-
 
   //for piccking file
   Future<void> pickFile() async {
@@ -221,8 +168,4 @@ class _SecondDesktopState extends State<SecondDesktop> {
       });
     }
   }
-  
 }
-
-
- 

@@ -41,10 +41,8 @@ class _FirstMobile extends State<FirstMobile> {
           ),
         ),
 
-        // Search bar
         Container(
           padding: EdgeInsets.all(16),
-          color: Colors.grey[100],
           child: searchBar()
         ),
 

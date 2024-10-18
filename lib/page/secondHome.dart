@@ -20,7 +20,7 @@ class _SecondHomeState extends State<SecondHome> {
       } else if (constraints.maxWidth >= desktopView){
         return SecondDesktop();
       } else {
-        return SecondTablet();
+        return SecondMobile();
       }
     },);
   }

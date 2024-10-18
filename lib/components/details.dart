@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class Details extends StatelessWidget {
   final List<DropdownMenuEntry> entries;
   final String label;
   final TextEditingController controller;
+  double width;
 
-  const Details({
+  Details({
     super.key,
     required this.label,
     required this.entries,
-    required this.controller
+    required this.controller,
+    this.width=250,
   });
 
   check(value){
@@ -22,7 +25,7 @@ class Details extends StatelessWidget {
       label: Text(label),
       dropdownMenuEntries: entries,
       menuHeight: 234,
-      width: 250,
+      width: width,
       controller: controller,
     );
   }
