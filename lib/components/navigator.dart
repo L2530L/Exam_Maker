@@ -1,4 +1,4 @@
-import 'package:exam_ai/page/secondHome.dart';
+import 'package:exam_ai/page/second_page/secondHome.dart';
 import 'package:flutter/material.dart';
 
 FilledButton navigator(BuildContext context) {

@@ -2,31 +2,40 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class Details extends StatelessWidget {
-  final List<DropdownMenuEntry> entries;
+  final List<DropdownMenuEntry<int>> entries;
   final String label;
   final TextEditingController controller;
-  double width;
+  final ValueChanged<int?> onSelected;
+  final int? selectedValue;
+  final double width;
 
-  Details({
+  const Details({
     super.key,
     required this.label,
     required this.entries,
     required this.controller,
-    this.width=250,
+    required this.onSelected,
+    this.selectedValue,
+    this.width = 250,
   });
 
-  check(value){
-    
-  }
+  // check(value) {}
 
   @override
   Widget build(BuildContext context) {
+    String dropdownLabel = (selectedValue != null && selectedValue! > 0)
+        ? entries.firstWhere((entry) => entry.value == selectedValue).label
+        : label;
+
     return DropdownMenu(
-      label: Text(label),
+      label: Text(dropdownLabel),
       dropdownMenuEntries: entries,
       menuHeight: 234,
       width: width,
       controller: controller,
+      onSelected: (value) {
+        onSelected(value);
+      },
     );
   }
 }

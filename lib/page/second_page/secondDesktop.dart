@@ -12,9 +12,13 @@ class SecondDesktop extends StatefulWidget {
 
 class _SecondDesktopState extends State<SecondDesktop> {
   TextEditingController items = TextEditingController();
+  TextEditingController examFormatController = TextEditingController();
+  TextEditingController subjectController = TextEditingController();
   PlatformFile? file;
-
-  int selectedIndex = 0;
+  int selectedSubject = 0;
+  int selectedExamFormat = 0;
+  int selectedExamType = 0;
+  int selectedItemCount = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -47,18 +51,30 @@ class _SecondDesktopState extends State<SecondDesktop> {
           //2
           Details(
             label: 'Subject',
-            entries: subject,
-            controller: TextEditingController(),
+            entries: subjects,
+            selectedValue: selectedSubject,
+            controller: subjectController,
+            onSelected: (value) {
+              setState(() {
+                selectedSubject = value ?? 0;
+              });
+            },
           ),
 
           const SizedBox(
             height: 30,
           ),
-
           Details(
-              label: 'Exam Options',
-              entries: examOption,
-              controller: TextEditingController()),
+            label: 'Exam Formats',
+            entries: examFormats,
+            selectedValue: selectedExamFormat,
+            controller: examFormatController,
+            onSelected: (value) {
+              setState(() {
+                selectedExamFormat = value ?? 0;
+              });
+            },
+          ),
 
           const SizedBox(
             height: 30,
@@ -72,9 +88,15 @@ class _SecondDesktopState extends State<SecondDesktop> {
 
           DropdownMenu(
             label: const Text('Items'),
-            dropdownMenuEntries: numba[selectedIndex],
+            dropdownMenuEntries: numba[selectedExamType],
             menuHeight: 234,
             width: 250,
+            onSelected: (int? value) {
+              if (value != null)
+                setState(() {
+                  selectedItemCount = value;
+                });
+            },
           ),
         ],
       ),
@@ -83,33 +105,16 @@ class _SecondDesktopState extends State<SecondDesktop> {
 
   DropdownMenu<dynamic> examMethod() {
     return DropdownMenu(
-      label: Text('Exam Type'),
+      label: const Text('Exam Type'),
       dropdownMenuEntries: examType,
       controller: items,
       menuHeight: 234,
       width: 250,
       onSelected: (value) {
-        if (value == 'Multiple Choice') {
-          setState(() {
-            selectedIndex = 0;
-          });
-        } else if (value == 'Identification') {
-          setState(() {
-            selectedIndex = 1;
-          });
-        } else if (value == 'Matching Type') {
-          setState(() {
-            selectedIndex = 2;
-          });
-        } else if (value == 'Problem Solving') {
-          setState(() {
-            selectedIndex = 3;
-          });
-        } else if (value == 'Essay') {
-          setState(() {
-            selectedIndex = 4;
-          });
-        }
+        setState(() {
+          selectedExamType = value ?? 0;
+          selectedItemCount = 0;
+        });
       },
     );
   }
@@ -125,16 +130,12 @@ class _SecondDesktopState extends State<SecondDesktop> {
           style: ButtonStyle(
               backgroundColor: WidgetStatePropertyAll(Colors.purple[900])),
         ),
-        const SizedBox(
-          width: 30,
-        ),
+        const SizedBox(width: 30),
         const DropdownMenu(
           dropdownMenuEntries: [],
           width: 200,
         ),
-        const SizedBox(
-          width: 50,
-        ),
+        const SizedBox(width: 50),
         Row(
           children: [
             IconButton(onPressed: () {}, icon: const Icon(Icons.cached)),
@@ -142,6 +143,8 @@ class _SecondDesktopState extends State<SecondDesktop> {
             IconButton(
                 onPressed: pickFile,
                 icon: const Icon(Icons.cloud_upload_outlined)),
+            const SizedBox(width: 10),
+            if (file != null) showSelectedFile(),
           ],
         ),
         Expanded(
@@ -156,11 +159,28 @@ class _SecondDesktopState extends State<SecondDesktop> {
     );
   }
 
-  //for piccking file
+  //display selected file
+  Row showSelectedFile() {
+    return Row(
+      children: [
+        const Text('Selected File: '),
+        InputChip(
+          label: Text(file!.name),
+          onDeleted: () {
+            setState(() {
+              file = null;
+            });
+          },
+        ),
+      ],
+    );
+  }
+
+  //for picking file
   Future<void> pickFile() async {
     final result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
-      allowedExtensions: ['pdf', 'docx', 'txt'],
+      allowedExtensions: ['pdf', 'xml', 'docx', 'txt'],
     );
     if (result != null && result.files.isNotEmpty) {
       setState(() {
