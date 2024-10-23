@@ -8,6 +8,30 @@ class ThirdDesktop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Exam'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'File Name: $fileName',
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 14),
+              SelectableText(
+                result,
+                style: const TextStyle(fontSize: 16),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

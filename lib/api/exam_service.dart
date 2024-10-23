@@ -6,7 +6,7 @@ import 'package:exam_ai/constants/const.dart';
 // import 'package:exam_ai/constants/const.dart';
 import 'package:file_picker/file_picker.dart';
 
-class MockExamService {
+class ExamService {
   final ApiClient _apiClient = ApiClient();
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
@@ -15,7 +15,7 @@ class MockExamService {
     int selectedSubject,
     int selectedExamFormat,
     int selectedExamType,
-    int itemCount,
+    int selectedItemCount,
   ) async {
     if (file.bytes != null) {
       Uint8List fileBytes = file.bytes!;
@@ -28,7 +28,7 @@ class MockExamService {
         selectedSubject,
         selectedExamFormat,
         selectedExamTypes,
-        itemCount,
+        selectedItemCount,
       );
       return result;
     } else {

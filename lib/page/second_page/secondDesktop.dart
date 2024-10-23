@@ -1,5 +1,7 @@
+import 'package:exam_ai/api/exam_service.dart';
 import 'package:exam_ai/components/details.dart';
 import 'package:exam_ai/constants/const.dart';
+import 'package:exam_ai/page/third_page/thirdDesktop.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +13,7 @@ class SecondDesktop extends StatefulWidget {
 }
 
 class _SecondDesktopState extends State<SecondDesktop> {
+  final ExamService _examService = ExamService();
   TextEditingController items = TextEditingController();
   TextEditingController examFormatController = TextEditingController();
   TextEditingController subjectController = TextEditingController();
@@ -42,7 +45,7 @@ class _SecondDesktopState extends State<SecondDesktop> {
             decoration:
                 BoxDecoration(border: Border.all(style: BorderStyle.solid)),
             padding: const EdgeInsets.all(10),
-            child: topRow(),
+            child: topRow(context),
           ),
 
           const SizedBox(
@@ -119,12 +122,28 @@ class _SecondDesktopState extends State<SecondDesktop> {
     );
   }
 
-  Row topRow() {
+  Row topRow(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         FilledButton.icon(
-          onPressed: () {},
+          onPressed: () async {
+            final result = await _examService.generateMockQuestions(
+                file!,
+                selectedSubject,
+                selectedExamFormat,
+                selectedExamType,
+                selectedItemCount);
+            if (context.mounted) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      ThirdDesktop(result: result, fileName: file!.name),
+                ),
+              );
+            }
+          },
           label: const Text('CREATE'),
           icon: const Icon(Icons.add),
           style: ButtonStyle(

@@ -26,9 +26,10 @@ class ApiClient {
 
     String examTypeLabel = selectedExamTypes;
 
-    String prompt = 'Summarize the following text and keep summary within '
-        'Focus on the subject of $subjectLabel and exam format of a $examFormatLabel,'
-        'and exam type of $examTypeLabel with $selectedItemCount items:\n\n'
+    String prompt =
+        'Generate $selectedItemCount exam questions from the following text. '
+        'Focus on the subject: $subjectLabel, exam format: $examFormatLabel, '
+        'and exam type: $examTypeLabel.\n\n'
         '$documentContent';
 
     String result = await callExamGenerationApi(prompt);
