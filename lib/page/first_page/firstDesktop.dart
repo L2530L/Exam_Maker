@@ -38,7 +38,7 @@ class FirstDesktop extends StatelessWidget {
 
   Row appBar() {
     return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const Padding(
               padding: EdgeInsets.all(8.0),
@@ -50,6 +50,9 @@ class FirstDesktop extends StatelessWidget {
                     fontSize: 50),
               ),
             ),
+            const SizedBox(
+              width:300
+            ),
             const Text(
               'Resources',
               style: TextStyle(
@@ -58,7 +61,6 @@ class FirstDesktop extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
-            searchBar()
           ],
         );
   }

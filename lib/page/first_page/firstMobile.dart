@@ -41,11 +41,6 @@ class _FirstMobile extends State<FirstMobile> {
           ),
         ),
 
-        Container(
-          padding: EdgeInsets.all(16),
-          child: searchBar()
-        ),
-
 
         // Main
         Expanded(
