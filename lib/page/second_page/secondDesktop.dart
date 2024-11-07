@@ -157,8 +157,6 @@ class _SecondDesktopState extends State<SecondDesktop> {
         const SizedBox(width: 50),
         Row(
           children: [
-            IconButton(onPressed: () {}, icon: const Icon(Icons.cached)),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.abc)),
             IconButton(
                 onPressed: pickFile,
                 icon: const Icon(Icons.cloud_upload_outlined)),
@@ -173,7 +171,6 @@ class _SecondDesktopState extends State<SecondDesktop> {
         IconButton(
             onPressed: () {},
             icon: const Icon(Icons.file_download_done_outlined)),
-        IconButton(onPressed: () {}, icon: const Icon(Icons.print)),
       ],
     );
   }

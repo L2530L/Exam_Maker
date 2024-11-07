@@ -173,10 +173,9 @@ class _SecondMobileState extends State<SecondMobile> {
               ),
             ),
           ),
-          IconButton(icon: Icon(Icons.refresh), onPressed: () {}),
           IconButton(icon: Icon(Icons.cloud_upload), onPressed: pickFile),
           IconButton(icon: Icon(Icons.check), onPressed: () {}),
-          IconButton(icon: Icon(Icons.print), onPressed: () {}),
+
         ],
       ),
     );

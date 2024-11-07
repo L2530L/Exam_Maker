@@ -1,3 +1,4 @@
+import 'package:exam_ai/components/hexagon.dart';
 import 'package:exam_ai/components/homeCard.dart';
 import 'package:exam_ai/components/mockExamCreator.dart';
 import 'package:exam_ai/components/navigator.dart';
@@ -15,53 +16,94 @@ class FirstDesktop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: appBar(),toolbarHeight: 100,),
+      extendBody: true,
+      appBar: AppBar(
+        elevation: 0,
+        title: appBar(),
+        toolbarHeight: 110,
+      ),
       body: Column(
         children: [
-          navigator(context),
-          SizedBox(
-            height: 50,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              const HomeCard(),
-              const TeacherResourceCard(),
-              const MockExamCreatorCard(),
-            ],
+          
+          Expanded(
+            child: Stack(children: [
+              Positioned.fill(
+                child: CustomPaint(
+                  painter: HexagonPatternPainter(
+                    hexagonSize: 150,
+                    spacing: 30,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(24.0),
+                child: Column(
+                  children: [
+                    navigator(context),
+                    SizedBox(height: 25,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const HomeCard(),
+                        const TeacherResourceCard(),
+                        const MockExamCreatorCard(),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              BottomBar(),
+            ]),
           )
         ],
       ),
     );
   }
 
+  Widget BottomBar() {
+    return Column(
+      children: [
+        Expanded(child: Container()),
+        Container(
+          height: 100,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.pink.shade300,
+                Colors.pink.shade500,
+              ],
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 
   Row appBar() {
     return Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                'MOCKexam',
-                style: TextStyle(
-                    color: Colors.orangeAccent,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 50),
-              ),
-            ),
-            const SizedBox(
-              width:300
-            ),
-            const Text(
-              'Resources',
-              style: TextStyle(
+      children: [
+        SizedBox(width:50),
+        Spacer(),
+        Text(
+            'MOCKexam',
+            style: TextStyle(
+                color: Colors.orangeAccent,
                 fontWeight: FontWeight.bold,
-                fontSize: 20,
-                color: Colors.black,
-              ),
-            ),
-          ],
-        );
+                fontSize: 50),
+          ),
+        Spacer(),
+        const Text(
+          'Resources',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+            color: Colors.black,
+          ),
+        ),
+      ],
+    );
   }
 }
