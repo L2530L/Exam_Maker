@@ -2,9 +2,8 @@ import 'package:exam_ai/components/hexagon.dart';
 import 'package:exam_ai/components/homeCard.dart';
 import 'package:exam_ai/components/mockExamCreator.dart';
 import 'package:exam_ai/components/navigator.dart';
-import 'package:exam_ai/components/search.dart';
 import 'package:exam_ai/components/teacherResource.dart';
-import 'package:exam_ai/page/second_page/secondDesktop.dart';
+import 'package:exam_ai/page/loginPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -19,7 +18,7 @@ class FirstDesktop extends StatelessWidget {
       extendBody: true,
       appBar: AppBar(
         elevation: 0,
-        title: appBar(),
+        title: appBar(context),
         toolbarHeight: 110,
       ),
       body: Column(
@@ -82,27 +81,40 @@ class FirstDesktop extends StatelessWidget {
     );
   }
 
-  Row appBar() {
+  Row appBar(BuildContext context) {
     return Row(
       children: [
         SizedBox(width:50),
         Spacer(),
+        Image.asset(
+          'assets/logo.png',
+          height: 175,
+          width: 175,
+        ),
         Text(
             'MOCKexam',
+            
             style: TextStyle(
                 color: Colors.orangeAccent,
                 fontWeight: FontWeight.bold,
-                fontSize: 50),
+                fontSize: 75),
           ),
         Spacer(),
-        const Text(
-          'Resources',
+        TextButton(onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const LoginPage(),
+                ),
+              );
+            }, child: Text(
+          'Log in/Register',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 20,
             color: Colors.black,
           ),
-        ),
+        ),)
       ],
     );
   }
