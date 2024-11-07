@@ -1,0 +1,39 @@
+name: exam_ai
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.4.3 <4.0.0'
+
+dependencies:
+  file_picker: ^8.1.2
+  flutter_dotenv: ^5.1.0
+  docx_to_text: ^1.0.1
+  google_sign_in_web: ^0.12.4+2
+  firebase_core: ^3.6.0
+  cloud_firestore: ^5.4.3
+  xml: ^6.5.0
+  syncfusion_flutter_pdf: ^27.1.58
+  google_generative_ai: ^0.4.6
+  syncfusion_flutter_pdfviewer: ^27.1.58
+  pdf: ^3.11.1
+  path_provider: ^2.1.5
+  open_file: ^3.2.1
+  html: ^0.15.5
+  file_saver: ^0.2.14
+
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+
+  uses-material-design: true
+  assets:
+    - .env
+    - assets/
