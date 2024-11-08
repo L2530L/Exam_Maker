@@ -1,7 +1,6 @@
 import 'package:exam_ai/constants/const.dart';
 import 'package:exam_ai/page/second_page/secondDesktop.dart';
 import 'package:exam_ai/page/second_page/secondMobile.dart';
-import 'package:exam_ai/page/second_page/secondTablet.dart';
 import 'package:flutter/material.dart';
 
 class SecondHome extends StatefulWidget {

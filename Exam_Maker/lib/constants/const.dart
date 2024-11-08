@@ -7,6 +7,8 @@ const List<List<DropdownMenuEntry<int>>> numba = [
   [
     DropdownMenuEntry<int>(value: 15, label: '15'),
     DropdownMenuEntry<int>(value: 20, label: '20'),
+    DropdownMenuEntry<int>(value: 50, label: '50'),
+    DropdownMenuEntry<int>(value: 100, label: '100'),
   ],
   [
     DropdownMenuEntry<int>(value: 10, label: '10'),

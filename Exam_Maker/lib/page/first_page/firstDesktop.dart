@@ -16,12 +16,16 @@ class FirstDesktop extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
+
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         elevation: 0,
         title: appBar(context),
         toolbarHeight: 110,
+
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Expanded(
             child: Stack(children: [
@@ -41,19 +45,36 @@ class FirstDesktop extends StatelessWidget {
                     SizedBox(
                       height: 25,
                     ),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const HomeCard(),
-                        const TeacherResourceCard(),
-                        const MockExamCreatorCard(),
+                        HomeCard(),
+                        TeacherResourceCard(),
+                        MockExamCreatorCard(),
                       ],
                     ),
                   ],
                 ),
               ),
               BottomBar(),
+              Positioned(
+                child: Image.asset('bee.png', height: 250,width:250),
+                bottom: 135,
+                left:600,
+              ),
+              Positioned(
+                child: Image.asset('person.png', height: 500,width:500, fit: BoxFit.fill,),
+                bottom: 5,
+                left:0,
+                
+              ),
+              Positioned(
+                child: Image.asset('teacher.png', height: 500,width:250, fit: BoxFit.fill,),
+                top: 5,
+                right:50,
+                
+              ),
             ]),
           )
         ],
